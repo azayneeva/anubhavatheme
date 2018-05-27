@@ -1,0 +1,43 @@
+/*
+Theme Name: Anubhava Theme
+Theme URI: 
+Author: Alina Solinas
+Author URI: 
+Description: 
+Version: 
+License: All right reserved
+*/
+
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    max-height: 50vh;
+    background-size: cover;
+    color: white;
+}
+
+.header-text {
+    font-size: 5vh;
+}
+
+.header-link {
+    font-size: 2vh;
+    margin-top: 4vh
+}
+
+.quote {
+    max-width: 50vw;
+    margin: 0 auto;
+    font-size: 1.5vw;
+    margin-top: 5vh;
+    line-height: 5vh
+}
+
+.quote-link {
+    margin-top: 2vh;
+    color: violet;
+    font-size: 2vh;
+}
