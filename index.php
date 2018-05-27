@@ -17,61 +17,142 @@
 
 get_header(); ?>
 
-<?php
-    function the_header() {
-        ?>
-<div class="container">
-    <div class="row">
-        <div class="header col-12" style="background-image: url('<?php the_sub_field('background');?>')">
-            <div class="text-center">
-                <h2 class="header-text"><?php the_sub_field('title'); ?></h2>
-                <h3 class="header-link"><?php the_sub_field('link'); ?></h3>    
+<?php function the_header() { ?>
+    <div class="container strip header">
+        <div class="row">
+            <div class="bg-wrapper col-12" style="background-image: url('<?php the_sub_field('background');?>')">
+                <div class="text-center">
+                    <h2 class="header-text"><?php the_sub_field('title'); ?></h2>
+                    <h3 class="header-link"><?php the_sub_field('link'); ?></h3>    
+                </div>
+            </div>
+        </div>  
+    </div>
+ <?php } ?>
+
+<?php function the_image() { ?>
+    <div class="container image strip">
+        <div class="row">
+            <div class="header col-12 text-center">
+                <?php 
+                    $image = get_sub_field('image');
+                    $size = 'full'; // (thumbnail, medium, large, full or custom size)
+
+                    if( $image ) {
+                        echo wp_get_attachment_image( $image, $size, "",array( "class" => "img-fluid" ) );
+                    }
+
+                ?>
+            </div>
+        </div>  
+    </div>
+ <?php } ?>
+
+
+<?php function the_quote() { ?>
+    <div class="container strip">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-12">
+                <h5 class="text-center text"><strong><?php the_sub_field('quote'); ?></strong></h5>
+                <div class="text-center quote-link"><?php the_sub_field('link'); ?></div>
             </div>
         </div>
-    </div>  
-</div>
-        <?php
-    }
-?>
+    </div>
+<?php } ?>
 
-
-
-<?php
-    function the_quote() {
-        ?>
-<h3 class="text-center quote"><?php the_sub_field('quote'); ?></h3>
-<h3 class="text-center quote-link"><?php the_sub_field('link'); ?></h3>
-        <?php
-    }
-?>
-
-
-<?php
-    function the_text_and_image() {
-        ?>
-<div class="container">
-    <div class="row">
-        <div class="col-6">
-            <img class="img-fluid" src="<?php the_sub_field('image'); ?>" alt=""/>
-        </div>
-        <div class="col-6">
-            <h3 class="header-link"><?php the_sub_field('text'); ?></h3>    
+<?php function the_text() { ?>
+    <div class="container strip">
+        <div class="row">
+            <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 col-12">
+                <strong>
+                    <?php the_sub_field('text'); ?>
+                </strong>
+            </div>
         </div>
     </div>
-</div>
-        <?php
-    }
-?>
+<?php } ?>
 
+<?php function the_text_and_image() { ?>
+    <div class="container text-and-image strip">
+        <div class="row bg" style="background-image: url('<?php the_sub_field('image'); ?>')">
+            <div class="col-12 col-lg-5 offset-lg-6 text-wrapper">
+                <div>
+                    <h2 class="header-link align-middle title"><?php the_sub_field('title'); ?></h2>   
+                    <div class="header-link align-middle"><?php the_sub_field('text'); ?></div>
+                </div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
+<?php function the_stats() { ?>
+    <div class="container strip stats">
+        <div class="row">
+            <div class="col-4 col-lg-2 offset-lg-3 item">
+                <div>Более</div>
+                <h2><?php the_sub_field('paintings'); ?></h2>
+                <div>картин</div>
+            </div>
+            <div class="col-4 col-lg-2 item">
+                <div>Более</div>
+                <h2><?php the_sub_field('private_galleries'); ?></h2>
+                <div>картин находятся в частных коллекциях</div>
+            </div>
+            <div class="col-4 col-lg-2 item">
+                <div>Более</div>
+                <h2><?php the_sub_field('exhibitions'); ?></h2>
+                <div>выставок</div>
+            </div>
+        </div>
+    </div>
+<?php } ?>
 
+<?php function the_gallery() {
+    $images = get_sub_field('gallery');
+    $size = 'full'; // (thumbnail, medium, large, full or custom size)
+    if( $images ) { ?>
+        <div class="container strip gallery">
+            <div class="row">
+                <div class="col-12">
+                    <div class="siema">
+                        <?php foreach( $images as $image ): ?>
+                            <div class="item">
+                                <?php echo wp_get_attachment_image( $image['ID'], $size, "",array( "class" => "img-fluid" ) ); ?>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <a class="prev"><span><</span></a>
+                    <a class="next"><span>></span></a>
+                </div>
+            </div>
+        </div>
 
+        <script>
+            var mySiema = new Siema({
+                selector: '.siema',
+                perPage: {
+                    576:2,
+                    768:3,
+                    992:4
+                },
+                loop: true,
+            })
 
+            var prev = document.querySelector('.prev')
+            var next = document.querySelector('.next')
 
-<?php the_post() ?>
+            prev.addEventListener('click', function(){ mySiema.prev() })
+            next.addEventListener('click', function(){ mySiema.next() })
+
+        </script>
+    <?php } ?>
+<?php } ?>
+
 
 
 <?php
+    the_post();
+
     if( have_rows('row') ):
         while ( have_rows('row') ) : the_row();
             if( get_row_layout() == 'hero' ):
@@ -80,6 +161,14 @@ get_header(); ?>
                 the_quote();
             elseif( get_row_layout() == 'text_and_image' ): 
                 the_text_and_image();
+            elseif( get_row_layout() == 'text' ): 
+                the_text();
+            elseif( get_row_layout() == 'slider' ): 
+                the_gallery();
+            elseif( get_row_layout() == 'stats' ): 
+                the_stats();
+            elseif( get_row_layout() == 'image' ): 
+                the_image();
             endif;
         endwhile;
     endif;
