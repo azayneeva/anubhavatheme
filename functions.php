@@ -22,6 +22,10 @@ function anubhava_setup() {
 	  'primary' => __( 'Header Navigation'),  
 	  'secondary' => __('Footer Navigation')  
 	) );
+
+	// Gallery
+	add_image_size( 'gallery_large_xl_8col', $width = 796, $height = 500, $crop = true );
+	add_image_size( 'gallery_large_xl_4col', $width = 383, $height = 500, $crop = true );
 }
 add_action( 'after_setup_theme', 'anubhava_setup' );
 

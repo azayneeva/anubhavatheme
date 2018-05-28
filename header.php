@@ -21,6 +21,8 @@
 <link href="https://fonts.googleapis.com/css?family=EB+Garamond:400,600,700" rel="stylesheet">
 
 <?php wp_head(); ?>
+<script src="https://unpkg.com/bricks.js/dist/bricks.js"></script>
+
 </head>
 
 <body <?php body_class(); ?>>
