@@ -17,9 +17,12 @@
  * as indicating support for post thumbnails.
  */
 function anubhava_setup() {
+	add_theme_support( 'post-thumbnails' );
+	
 	// This theme uses wp_nav_menu() in two locations.  
 	register_nav_menus( array(  
-	  'primary' => __( 'Header Navigation'),  
+	  'primary' => __( 'Header Navigation'),
+	  'primary-2' => __( 'Header Navigation Second Column'),  
 	  'secondary' => __('Footer Navigation')  
 	) );
 

@@ -1,0 +1,78 @@
+.menu-overlay {
+	position: fixed;
+	top:0;
+	bottom:0;
+	left:0;
+	right:0;
+	background: #222;
+	color: white;
+
+    animation: fadeInFromNone 0.3s ease-in;
+
+	a {
+		color:inherit;
+	}
+
+	ul {
+		font-size: 22px;
+		li {
+
+		}
+	}
+
+	.contacts {
+		border-top: 1px solid #333;
+		a {
+			display: inline-block;
+			margin: 30px;
+		}
+	}
+}
+
+.header {
+	border-bottom: 1px solid #EBEBEB;
+	padding-bottom: 20px;
+
+	a {
+		color: inherit;
+	}
+
+	.logo {
+		max-width: 50px;
+	}
+
+	#menu-opener {
+		color: #7E4191;
+		a {
+			color: inherit;
+		}
+
+		svg, span {
+			vertical-align: middle;
+		}
+
+		span {
+			margin-left: 20px;
+		}	
+	}
+
+
+}
+
+
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+
+    1% {
+        display: block;
+        opacity: 0;
+    }
+
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}

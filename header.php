@@ -26,13 +26,45 @@
 </head>
 
 <body <?php body_class(); ?>>
-	<div class="container">
-		<div class="col-12">
-			<?php 
-				wp_nav_menu( array(
-					'theme_location' => 'primary',
-					'items_wrap' => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>'
-				) );
-			?>
+
+<div class="container header mt-3 mb-3">
+	<div class="d-flex justify-content-between">
+		<a id="menu-opener" href="#">
+			<?xml version="1.0" encoding="UTF-8"?>
+			<svg width="24px" height="22px" viewBox="0 0 24 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+			    <defs></defs>
+			    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+			        <g id="burger" fill="#7E4191" stroke="#78428E">
+			            <rect id="Rectangle" x="0.5" y="0.5" width="23" height="1"></rect>
+			            <rect id="Rectangle" x="0.5" y="10.5" width="15" height="1"></rect>
+			            <rect id="Rectangle" x="0.5" y="20.5" width="17" height="1"></rect>
+			        </g>
+			    </g>
+			</svg>
+			<span>Меню</span>
+		</a>
+		<div>
+            <?php 
+                $image = get_field('footer_logo', 'option');
+                $size = 'full'; // (thumbnail, medium, large, full or custom size)
+
+                if( $image ) {
+                    echo wp_get_attachment_image( $image, $size, "",array( "class" => "logo img-fluid" ) );
+                }
+
+            ?>
+		</div>
+		<div>
+			<a href="phone:<?php the_field('phone_number', 'option'); ?>">
+				<?php the_field('phone_number', 'option'); ?>
+			</a>
 		</div>
 	</div>
+</div>
+
+<script>
+	document.getElementById('menu-opener').addEventListener('click', function(e){
+		e.preventDefault()
+		document.getElementById('menu-overlay').classList.remove("hidden")
+	})
+</script>

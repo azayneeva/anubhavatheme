@@ -10,6 +10,7 @@ License: All right reserved
 
 @import 'bootstrap/bootstrap';
 @import 'variables';
+@import 'menu';
 @import 'footer';
 
 body {
@@ -22,6 +23,36 @@ body {
 
 .strip {
 	margin-bottom: 45px;
+}
+
+.hidden {
+	display: none;
+	opacity: 0;
+}
+
+// Text and image row
+.hero {
+	color: white;
+
+	a {
+		color:inherit;
+	}
+
+	.text-wrapper{
+		display: flex;
+		align-items: center;
+		height: 100%;
+		justify-content: center;	
+	}
+
+	.bg-wrapper {
+		background-color: #99cfff;
+		min-height: 300px;
+
+		@include media-breakpoint-up(md) {
+			min-height: 500px;
+		}
+	}
 }
 
 // Text and image row
@@ -66,9 +97,48 @@ body {
 .text {
 }
 
+.latest-blog {
+	a {
+		color: inherit;
+		display: block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		text-decoration: none;
+
+		&:hover {
+			.read-more {
+				text-decoration: underline;
+			}
+		}
+	}
+
+	h2 {
+		border-bottom: 1px solid #ccc;
+		padding-bottom: 30px;
+		margin-bottom: 30px;
+	}
+
+	.text-wrapper{
+		display: flex;
+		align-items: center;
+		height: 100%;
+		justify-content: center;	
+	}
+}
+
 // Gallery
-.gallery {
+.slider {
 	position: relative;
+	text-align: center;
+
+	.title {
+		font-weight: 600;
+	    padding: 10px;
+	}
+	.description,
+	.size {
+		color: #838383;
+	}
 
 	.item {
 	    border-left: 20px solid white;
@@ -155,21 +225,40 @@ body {
 	}
 }
 
-//Image
-.image {
+//Links to 3 pages
+.links-to-3-pages {
+	a {
+		color: inherit;
+		display: block;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		text-decoration: none;
+
+		&:hover {
+			background-color: #dedede;
+			.read-more {
+				text-decoration: underline;
+			}
+		}
+
+		h3,
+		.description {
+			font-weight: bold;
+		}
+
+		.image {
+			margin-bottom: 20px;
+			margin-top: 20px;
+		}
+
+		.footer {
+			padding-left:20px;
+			padding-right:20px;
+		}
+	}
+
 }
 
-//Gallery
-.gallery {
-
-	text-align: center;
-
-	.title {
-		font-weight: 600;
-	    padding: 10px;
-	}
-	.description,
-	.size {
-		color: #838383;
-	}
+//Image
+.image {
 }

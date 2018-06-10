@@ -53,12 +53,10 @@
 				<?php
 					// check if the repeater field has rows of data
 					if( have_rows('social_links', 'options') ): ?>
-
 					    <ul class="list-unstyled">
-
 					    	<?php while ( have_rows('social_links', 'options') ) : the_row(); ?>
 					    		<li>
-						        	<a href="<?php the_sub_field('url'); ?>">
+						        	<a href="<?php the_sub_field('url'); ?>" target="_blank">
 						        		<div class="img">
 							        		<?php 
 							                    $image = get_sub_field('logo');
@@ -80,6 +78,102 @@
 		</div>
 	</div>
 </footer>
+
+
+<?php function the_single_training_footer() { ?>
+  <div class="training">
+  	<a href="<?php the_permalink()?>">
+	    <span class="description"><?php the_field('date');?></span>,
+	    <span class="title"><?php the_title();?></span>
+	</a>
+  </div>
+<?php } ?>
+
+<div id="menu-overlay" class="menu-overlay hidden">
+	<div class="container">
+		<div class="row">
+			<div class="">
+				<a id="close" href="#">X</a>
+			</div>
+		</div>
+
+		<div class = "row mt-5">
+			<div class="col-3">
+				<?php 
+					wp_nav_menu( array(
+						'theme_location' => 'primary',
+						'items_wrap' => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>'
+					) );
+				?>
+			</div>
+			<div class="col-6">
+				<a href="<?php 
+					the_permalink(get_page_by_path('trainings'))
+				?>">
+					<h4>Тренинги</h4>	
+				</a>
+			  <?php 
+			    $today = date('Ymd', strtotime('-1 day'));
+
+			    $args = array(
+			      'post_type' => 'trainings',
+			      'post_status' => 'publish',
+			      'posts_per_page' => -1,
+			      'meta_query' => array(
+			          array(
+			              'key'       => 'available_until',
+			              'value'     => $today,
+			              'compare'   => '>',
+			          ),
+			      ),
+			    );
+			    $trainings = new WP_Query( $args );
+			    if ( $trainings -> have_posts() ) {
+			      while ( $trainings -> have_posts() ) {
+			        $trainings->the_post();
+			        the_single_training_footer();
+			      }
+			    }
+			    wp_reset_query();
+			  ?>
+			</div>
+			<div class="col-3">
+				<?php 
+					wp_nav_menu( array(
+						'theme_location' => 'primary-2',
+						'items_wrap' => '<ul id="%1$s" class="%2$s list-unstyled">%3$s</ul>'
+					) );
+				?>
+			</div>
+		</div>
+
+  
+		<div class="contacts row text-center">
+			<a href="phone:<?php the_field('phone_number', 'option'); ?>">
+				<?php the_field('phone_number', 'option'); ?>
+			</a>
+			<a href="mailto:<?php the_field('email', 'option'); ?>">
+				<?php the_field('email', 'option'); ?>
+			</a>
+			<a href="skype:<?php the_field('skype', 'option'); ?>">
+				<span class="text-color-light">Skype:</span> <?php the_field('skype', 'option'); ?>
+			</a>
+		</div>
+	</div>
+</div>
+
+<script>
+	document.addEventListener('keydown', function(e){
+		if (e.code === 'Escape') {
+			document.getElementById('menu-overlay').classList.add("hidden")	
+		}
+	})
+
+	document.getElementById('close').addEventListener('click', function(e){
+		e.preventDefault()
+		document.getElementById('menu-overlay').classList.add("hidden")
+	})
+</script>
 
 <?php wp_footer(); ?>
 
