@@ -92,8 +92,18 @@
 <div id="menu-overlay" class="menu-overlay hidden">
 	<div class="container">
 		<div class="row">
-			<div class="">
-				<a id="close" href="#">X</a>
+			<div class="mt-2">
+				<a href="#" id="close">
+					<?xml version="1.0" encoding="UTF-8"?>
+					<svg width="25px" height="27px" viewBox="0 0 25 27" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+					    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="square">
+					        <g id="close" transform="translate(1.000000, 1.000000)" stroke="#FFFFFF" stroke-width="2">
+					            <path d="M0.5,0.5 L22.5,24.5" id="Line"></path>
+					            <path d="M0.5,0.5 L22.5,24.5" id="Line" transform="translate(11.500000, 12.500000) scale(1, -1) translate(-11.500000, -12.500000) "></path>
+					        </g>
+					    </g>
+					</svg>
+				</a>
 			</div>
 		</div>
 
@@ -108,7 +118,7 @@
 			</div>
 			<div class="col-6">
 				<a href="<?php 
-					the_permalink(get_page_by_path('trainings'))
+					get_permalink(get_page_by_path('trainings'))
 				?>">
 					<h4>Тренинги</h4>	
 				</a>
@@ -148,7 +158,7 @@
 		</div>
 
   
-		<div class="contacts row text-center">
+		<div class="contacts row d-flex justify-content-around mt-5">
 			<a href="phone:<?php the_field('phone_number', 'option'); ?>">
 				<?php the_field('phone_number', 'option'); ?>
 			</a>

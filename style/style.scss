@@ -262,3 +262,14 @@ body {
 //Image
 .image {
 }
+
+//Upcoming trainings, upcoming exhibitions
+.upcoming-trainings, .upcoming-exhibitions {
+	a {
+		color: inherit;
+	}
+
+	.title {
+		color: #7E4191;
+	} 
+}

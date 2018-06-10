@@ -6512,6 +6512,8 @@ a.text-dark:hover, a.text-dark:focus {
     color: inherit; }
   .menu-overlay ul {
     font-size: 22px; }
+  .menu-overlay svg {
+    width: 15px; }
   .menu-overlay .contacts {
     border-top: 1px solid #333; }
     .menu-overlay .contacts a {
@@ -6740,5 +6742,10 @@ body {
   .links-to-3-pages a .footer {
     padding-left: 20px;
     padding-right: 20px; }
+
+.upcoming-trainings a, .upcoming-exhibitions a {
+  color: inherit; }
+.upcoming-trainings .title, .upcoming-exhibitions .title {
+  color: #7E4191; }
 
 /*# sourceMappingURL=style.css.map */
