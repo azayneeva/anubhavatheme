@@ -9,7 +9,7 @@
 
   <div class="container strip upcoming-exhibitions">
     <div class="grid row">
-      <a class="col-2 offset-1" href="<?php get_permalink(get_page_by_path('exhibitions'))?>">
+      <a class="col-2 offset-1" href="<?php echo get_permalink(get_page_by_path('exhibitions')->ID)?>">
         <h6>ВЫСТАВКИ</h6>
       </a>
       <?php 

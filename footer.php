@@ -117,9 +117,7 @@
 				?>
 			</div>
 			<div class="col-6">
-				<a href="<?php 
-					get_permalink(get_page_by_path('trainings'))
-				?>">
+				<a href="<?php echo get_permalink(get_page_by_path('trainings')->ID) ?>">
 					<h4>Тренинги</h4>	
 				</a>
 			  <?php 

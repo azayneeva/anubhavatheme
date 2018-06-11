@@ -6524,7 +6524,8 @@ a.text-dark:hover, a.text-dark:focus {
   border-bottom: 1px solid #EBEBEB;
   padding-bottom: 20px; }
   .header a {
-    color: inherit; }
+    color: inherit;
+    text-decoration: none; }
   .header .logo {
     max-width: 50px; }
   .header #menu-opener {
@@ -6599,6 +6600,7 @@ body {
   color: #A2A2A2; }
 
 .strip {
+  margin-top: 45px;
   margin-bottom: 45px; }
 
 .hidden {
@@ -6643,18 +6645,22 @@ body {
   .text-and-image .bg {
     background-position-x: -80px; } }
 
+.all-trainings a,
 .latest-blog a {
   color: inherit;
   display: block;
   padding-top: 10px;
   padding-bottom: 10px;
   text-decoration: none; }
+  .all-trainings a:hover .read-more,
   .latest-blog a:hover .read-more {
     text-decoration: underline; }
+.all-trainings h2,
 .latest-blog h2 {
   border-bottom: 1px solid #ccc;
   padding-bottom: 30px;
   margin-bottom: 30px; }
+.all-trainings .text-wrapper,
 .latest-blog .text-wrapper {
   display: flex;
   align-items: center;
